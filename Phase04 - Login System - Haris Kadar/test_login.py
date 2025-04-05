@@ -61,7 +61,6 @@ class TestLogin(unittest.TestCase):
 
     def test_create_user_failure(self):
         print("Test Case: Failed User Creation")
-
         result1, message1 = create_user('username1', 'password123')
         print("→ Duplicate username attempt")
         print(f"← Result: {result1}, Message: {message1}")
@@ -118,7 +117,27 @@ class TestLogin(unittest.TestCase):
         print(f"← Current user: '{user}'")
         self.assertEqual(user, 'username1')
 
+    def test_input_variants(self):
+        print("Test Case: Testing Various Input Combinations")
+        test_cases = [
+            ("Username123", "Password123"),
+            ("Username123", "123"),
+            ("abc", "Password123"),
+            (" ", "Password123"),
+            ("Username123", " ")
+        ]
+
+        for username, password in test_cases:
+            result, message = create_user(username, password)
+            print(f"→ Creating user with username: '{username}' and password: '{password}'")
+            print(f"← Result: {result}, Message: {message}")
+
+            if result:
+                login_result = login(username, password)
+                print(f"→ Login with '{username}' and '{password}'")
+                print(f"← Login Result: {login_result}")
+            print("-" * 40)
+
 if __name__ == '__main__':
     print("=== RUNNING LOGIN MODULE TESTS ===")
     unittest.main(verbosity=2)
-    print("=== TESTS COMPLETED ===")
