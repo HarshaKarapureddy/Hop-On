@@ -1,0 +1,19 @@
+.landing-page {
+    text-align: center;
+    padding: 10px;
+    background-color: #260b58;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+}
+
+.landing-button {
+    margin: 10px;
+    font-size: 20px; 
+    padding: 10px 20px;
+    border-radius: 5px;
+}
